@@ -1,4 +1,4 @@
-package login.capmaignmonitor;
+package com.campaignmonitor.login.setup;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -21,6 +21,8 @@ import org.testng.asserts.SoftAssert;
 public class Login {
 	WebDriver driver;
 	
+	//Sign-up page elements
+	
 	public WebElement get_username() throws Exception {
 		return (driver.findElement(By.name("contactName")));
 	}
@@ -40,6 +42,7 @@ public class Login {
 		return (driver.findElement(By.xpath("/html/body/section[2]/div/div[1]/div/form/button")));
 	}
 	
+	//Account Setup Elements
 	
 	public WebElement get_continue_page() throws Exception {
 		return (driver.findElement(By.cssSelector(".cmds-button")));
@@ -69,11 +72,13 @@ public class Login {
 		return (driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/div/div/form/div[2]/div[2]/button")));
 	}
 	
+	// Home page Elements
+	
 	public WebElement get_verify_home_page() throws Exception {
 		return (driver.findElement(By.xpath("//*[@id='root']/div/div/div/div[2]/div/div[1]/p")));
 	}
 	
-	//Get chrome Driver and implicit wait
+	//Get Chrome Driver
 	public Login() {
 		System.setProperty("webdriver.chrome.driver",
 				"src\\test\\resources\\chromedriver.exe");
@@ -123,6 +128,7 @@ public class Login {
 		Thread.sleep(2000);
 		get_continue_page().click();
 		Thread.sleep(3000);
+		
 		//Organization page
 		Select organization = new Select(driver.findElement(By.className("qa-organization-industry")));
 		organization.selectByValue("automotive");
@@ -132,23 +138,21 @@ public class Login {
 		get_organization_type().click();
 		Thread.sleep(3000);
 		get_continue_page().click();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
+		
 		//Filling Subscriber page
 		get_subscribers().click();
 		Thread.sleep(2000);
 		get_skip_button().click();
 		Thread.sleep(2000);
-		//get_continue_page().click();
-		System.out.println("----------------------------Completed Subscriber Page-----------------------");
-		Thread.sleep(2000);
 		get_cm_user().click();
 		Thread.sleep(5000);
 		get_let_get_Start().click();
 		Thread.sleep(5000);
+		
 		//Assert Login successful
 		Assert.assertTrue(get_verify_home_page().getText().contains("Let’s get you started"));
 		Assert.assertAll();
-		//logger.info("Deleting dependent data is successfull");
 		driver.close();
 		return driver;
 	}

@@ -1,7 +1,9 @@
-package login.capmaignmonitor;
+package com.campaignmonitor.login.setup;
 
 //import login.capmaignmonitor;
 import org.testng.annotations.Test;
+
+import com.campaignmonitor.login.setup.Login;
 
 public class CampaignMonitorLogin {
 	
