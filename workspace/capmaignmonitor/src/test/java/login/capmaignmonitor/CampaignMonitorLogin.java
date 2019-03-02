@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class CampaignMonitorLogin {
 	
-	@Test(priority=1)
+	@Test(priority=1,groups={"orders","sanity","regression"})
 	public void testLogin() throws Exception {
 		Login login = new Login();
 		login.LoginToCM("test", "ui.test.login");
