@@ -7,7 +7,7 @@ import com.campaignmonitor.login.setup.Login;
 
 public class CampaignMonitorLogin {
 	
-	@Test(priority=1,groups={"orders","sanity","regression"})
+	@Test(priority=1,groups={"sanity","regression"})
 	public void testLogin() throws Exception {
 		Login login = new Login();
 		login.LoginToCM("test", "ui.test.login");
